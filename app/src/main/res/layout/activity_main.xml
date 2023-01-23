@@ -96,11 +96,12 @@
         android:layout_marginStart="10dp"
         android:width="100dp"
         android:text="Go"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editTextNumber"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumber" />
+        android:onClick="doCalculate"
+        app:layout_constraintBaseline_toBaselineOf="@+id/NumPeopleNumber"
+        app:layout_constraintStart_toEndOf="@+id/NumPeopleNumber" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/NumPeopleNumber"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="11dp"
@@ -126,7 +127,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/totalTextView"
         android:layout_width="175dp"
         android:layout_height="38dp"
         android:layout_marginStart="24dp"
@@ -143,6 +144,7 @@
         android:layout_marginBottom="44dp"
         android:height="46dp"
         android:text="Clear"
+        android:onClick="doClear"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
