@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup tipGroup;
     private double tip = 0;
 
+    private double totalWithTipValue = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,33 +37,31 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "doCalculate: ");
         String billTotalWithTaxValue = bilLTotalWithTax.getText().toString();
         if (billTotalWithTaxValue.isEmpty()){
+            tipGroup.clearCheck();
+            return;
+        }else if (v.getId() == R.id.tweleveRadio){
+            tip = 0.12;
+        }else if (v.getId() == R.id.fifteenRadio){
+            tip = 0.15;
+        }else if (v.getId() == R.id.eighteenRadio){
+            tip  = 0.18;
+        }else if (v.getId() == R.id.twentyRadio){
+            tip = 0.20;
+        }else{
+            Log.d(TAG, "doCalculate: ERROR HAPPENED");
             return;
         }
-        String NumPeopleValue = NumPeople.getText().toString();
         //include scenario
         //if the bill total is empty, selecting a tip percentage should do nothing
         //and the selected tip percentage radio button should then be automatically un-checked
 
         double tipAmountValue = Double.parseDouble(String.format("%.2f",Double.parseDouble(billTotalWithTaxValue) * tip));
-        double totalWithTipValue = tipAmountValue + Double.parseDouble(billTotalWithTaxValue);
-        int numberOfPeople = Integer.parseInt(NumPeopleValue);
-        double totalPerPersonValue = Double.parseDouble(String.format("%.2f",totalWithTipValue/numberOfPeople)); //this value needs to be rounded to two places
-        if (totalPerPersonValue * numberOfPeople < totalWithTipValue){
-            Log.d(TAG, "test "+ totalWithTipValue);
-            Log.d(TAG, "test" + totalPerPersonValue * numberOfPeople);
-            double difference = Double.parseDouble(String.format("%.2f",totalWithTipValue - (totalPerPersonValue * numberOfPeople)));
-            Log.d(TAG, "DIFFERENCE: "+ difference);
-            totalPerPersonValue = Double.parseDouble(String.format("%.2f",totalPerPersonValue + difference));
-            Log.d(TAG, "AFTER CALCUlAIONS: "+ totalPerPersonValue);
-        }
+        totalWithTipValue = tipAmountValue + Double.parseDouble(billTotalWithTaxValue);
         tipAmount.setText(String.format("$%.2f", tipAmountValue));
         totalWithTip.setText(String.format("$%.2f", totalWithTipValue));
-        totalPerPerson.setText(String.format("$%.2f", totalPerPersonValue));
-        Log.d(TAG, "totalPerPerson: "+ totalWithTipValue/numberOfPeople);
         Log.d(TAG, "tipAmountValue: " + tipAmountValue);
         Log.d(TAG, "totalWithTip "+ totalWithTipValue);
         //Log.d(TAG, "billTotalWithTaxValue: " +billTotalWithTaxValue);
-        Log.d(TAG, "NumPeopleValue: " +NumPeopleValue);
     }
 
     public void getTipValue(View v){
@@ -88,5 +87,22 @@ public class MainActivity extends AppCompatActivity {
         totalWithTip.setText("");
         totalPerPerson.setText("");
         tipGroup.clearCheck();
+    }
+
+    public void calculateTotalPerPerson(View v){
+        String NumPeopleValue = NumPeople.getText().toString();
+        int numberOfPeople = Integer.parseInt(NumPeopleValue);
+        double totalPerPersonValue = Double.parseDouble(String.format("%.2f",totalWithTipValue/numberOfPeople)); //this value needs to be rounded to two places
+        if (totalPerPersonValue * numberOfPeople < totalWithTipValue){
+            Log.d(TAG, "test "+ totalWithTipValue);
+            Log.d(TAG, "test" + totalPerPersonValue * numberOfPeople);
+            double difference = Double.parseDouble(String.format("%.2f",totalWithTipValue - (totalPerPersonValue * numberOfPeople)));
+            Log.d(TAG, "DIFFERENCE: "+ difference);
+            totalPerPersonValue = Double.parseDouble(String.format("%.2f",totalPerPersonValue + difference));
+            Log.d(TAG, "AFTER CALCUlAIONS: "+ totalPerPersonValue);
+        }
+        totalPerPerson.setText(String.format("$%.2f", totalPerPersonValue));
+        Log.d(TAG, "totalPerPerson: "+ totalWithTipValue/numberOfPeople);
+        Log.d(TAG, "NumPeopleValue: " +NumPeopleValue);
     }
 }
