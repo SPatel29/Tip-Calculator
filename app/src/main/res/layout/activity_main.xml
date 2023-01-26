@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
         android:layout_marginTop="36dp"
-        android:text="Bill Total with Tax:"
+        android:text="@string/bill_total_with_tax"
         android:textAlignment="center"
         android:textSize="19sp"
         android:textStyle="bold"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
         android:layout_marginTop="32dp"
-        android:text="Tip Percent:"
+        android:text="@string/tip_percent"
         android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
         android:layout_marginTop="96dp"
-        android:text="Tip Amount:"
+        android:text="@string/tip_amount"
         android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
         android:layout_marginTop="35dp"
-        android:text="Total with Tip:"
+        android:text="@string/total_with_tip"
         android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="64dp"
-        android:text="Number of People:"
+        android:text="@string/number_of_people"
         android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,7 +95,7 @@
         android:layout_height="46dp"
         android:layout_marginStart="10dp"
         android:width="100dp"
-        android:text="Go"
+        android:text="@string/go"
         android:onClick="doCalculate"
         app:layout_constraintBaseline_toBaselineOf="@+id/NumPeopleNumber"
         app:layout_constraintStart_toEndOf="@+id/NumPeopleNumber" />
@@ -120,7 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
         android:layout_marginTop="60dp"
-        android:text="Total Per Person:"
+        android:text="@string/total_per_person"
         android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +143,7 @@
         android:layout_height="46dp"
         android:layout_marginBottom="44dp"
         android:height="46dp"
-        android:text="Clear"
+        android:text="@string/clear"
         android:onClick="doClear"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -185,38 +185,42 @@
         app:layout_constraintVertical_bias="0.32999998">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/tweleveRadio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:buttonTint="@color/purple_500"
-            android:text="12%"
+            android:text="@string/twelvePercent"
+            android:onClick="getTipValue"
             android:textSize="16sp" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/fifteenRadio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:buttonTint="@color/purple_500"
-            android:text="15%"
+            android:text="@string/fifteenPercent"
+            android:onClick="getTipValue"
             android:textSize="16sp" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/eighteenRadio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:buttonTint="@color/purple_500"
-            android:text="18%"
+            android:text="@string/eighteenPercent"
+            android:onClick="getTipValue"
             android:textSize="16sp" />
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/twentyRadio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:buttonTint="@color/purple_500"
-            android:text="20%"
+            android:text="@string/twentyPercent"
+            android:onClick="getTipValue"
             android:textSize="16sp" />
     </RadioGroup>
 
