@@ -43,16 +43,25 @@ public class MainActivity extends AppCompatActivity {
         //if the bill total is empty, selecting a tip percentage should do nothing
         //and the selected tip percentage radio button should then be automatically un-checked
 
-        double tipAmountValue = Double.parseDouble(billTotalWithTaxValue) * tip;
+        double tipAmountValue = Double.parseDouble(String.format("%.2f",Double.parseDouble(billTotalWithTaxValue) * tip));
         double totalWithTipValue = tipAmountValue + Double.parseDouble(billTotalWithTaxValue);
         int numberOfPeople = Integer.parseInt(NumPeopleValue);
-        Log.d(TAG, "tipAmountValue: " + tipAmountValue);
+        double totalPerPersonValue = Double.parseDouble(String.format("%.2f",totalWithTipValue/numberOfPeople)); //this value needs to be rounded to two places
+        if (totalPerPersonValue * numberOfPeople < totalWithTipValue){
+            Log.d(TAG, "test "+ totalWithTipValue);
+            Log.d(TAG, "test" + totalPerPersonValue * numberOfPeople);
+            double difference = Double.parseDouble(String.format("%.2f",totalWithTipValue - (totalPerPersonValue * numberOfPeople)));
+            Log.d(TAG, "DIFFERENCE: "+ difference);
+            totalPerPersonValue = Double.parseDouble(String.format("%.2f",totalPerPersonValue + difference));
+            Log.d(TAG, "AFTER CALCUlAIONS: "+ totalPerPersonValue);
+        }
         tipAmount.setText(String.format("$%.2f", tipAmountValue));
         totalWithTip.setText(String.format("$%.2f", totalWithTipValue));
-        totalPerPerson.setText(String.format("$%.2f", totalWithTipValue/numberOfPeople));
+        totalPerPerson.setText(String.format("$%.2f", totalPerPersonValue));
         Log.d(TAG, "totalPerPerson: "+ totalWithTipValue/numberOfPeople);
+        Log.d(TAG, "tipAmountValue: " + tipAmountValue);
         Log.d(TAG, "totalWithTip "+ totalWithTipValue);
-        Log.d(TAG, "billTotalWithTaxValue: " +billTotalWithTaxValue);
+        //Log.d(TAG, "billTotalWithTaxValue: " +billTotalWithTaxValue);
         Log.d(TAG, "NumPeopleValue: " +NumPeopleValue);
     }
 
