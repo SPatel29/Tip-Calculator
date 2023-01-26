@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="96dp"
         android:text="Tip Amount:"
         android:textSize="19sp"
         android:textStyle="bold"
@@ -81,8 +81,8 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="64dp"
         android:text="Number of People:"
         android:textSize="19sp"
         android:textStyle="bold"
@@ -104,7 +104,7 @@
         android:id="@+id/NumPeopleNumber"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
+        android:layout_marginStart="20dp"
         android:width="100dp"
         android:background="#DCFFDC"
         android:ems="10"
@@ -165,26 +165,31 @@
         android:id="@+id/divider2"
         android:layout_width="409dp"
         android:layout_height="1dp"
+        android:layout_marginBottom="24dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.684" />
 
     <RadioGroup
+        android:id="@+id/tipRadioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/tipAmountView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tipPercentView">
+        app:layout_constraintTop_toBottomOf="@+id/tipPercentView"
+        app:layout_constraintVertical_bias="0.32999998">
 
         <RadioButton
             android:id="@+id/radioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
+            android:buttonTint="@color/purple_500"
             android:text="12%"
             android:textSize="16sp" />
 
@@ -193,6 +198,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
+            android:buttonTint="@color/purple_500"
             android:text="15%"
             android:textSize="16sp" />
 
@@ -201,6 +207,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
+            android:buttonTint="@color/purple_500"
             android:text="18%"
             android:textSize="16sp" />
 
@@ -208,6 +215,7 @@
             android:id="@+id/radioButton4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:buttonTint="@color/purple_500"
             android:text="20%"
             android:textSize="16sp" />
     </RadioGroup>
