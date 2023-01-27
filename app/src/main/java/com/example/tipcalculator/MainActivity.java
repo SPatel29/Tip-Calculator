@@ -1,5 +1,6 @@
 package com.example.tipcalculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -104,5 +105,27 @@ public class MainActivity extends AppCompatActivity {
         totalPerPerson.setText(String.format("$%.2f", totalPerPersonValue));
         Log.d(TAG, "totalPerPerson: "+ totalWithTipValue/numberOfPeople);
         Log.d(TAG, "NumPeopleValue: " +NumPeopleValue);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        //outState.putString("NUM_PEOPLE",NumPeople.getText().toString());
+        outState.putDouble("TIP",tip);
+        outState.putString("TOTAL_PER_PERSON", totalPerPerson.getText().toString());
+        outState.putString("TIP_AMOUNT", tipAmount.getText().toString());
+        outState.putString("TOTAL_WITH_TIP", totalWithTip.getText().toString());
+        outState.putDouble("TOTAL_WITH_TIP_VALUE", totalWithTipValue);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState); //take things out and put them back out
+        tip = savedInstanceState.getDouble("TIP");
+        totalPerPerson.setText(savedInstanceState.getString("TOTAL_PER_PERSON"));
+        tipAmount.setText(savedInstanceState.getString("TIP_AMOUNT"));
+        totalWithTip.setText(savedInstanceState.getString("TOTAL_WITH_TIP"));
+        totalWithTipValue = savedInstanceState.getDouble("TOTAL_WITH_TIP_VALUE");
+        //totalPerPerson.setText(savedInstanceState.getString("TIP"));
     }
 }
